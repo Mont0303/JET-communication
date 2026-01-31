@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome da Empresa | Portfólio</title>
+    <style>
+        :root {
+            /* SEU TEMA CLARO */
+            --primaria: #2E2E2E;
+            --secundaria: #8E8F91;
+            --terciaria: #BFC0C2;
+            --texto-escuro: #0F0F10;
+            --texto-claro: #F4F5F6;
+            --fundo: #E6E7E8;
+            --card-bg: #F4F5F6;
+            --borda: #BFC0C2;
+            --sombra: rgba(0, 0, 0, 0.08);
+            --destaque: #4A90E2; /* Adicionei uma cor de destaque para links */
+        }
+
+        [data-theme="dark"] {
+            /* SEU TEMA ESCURO */
+            --primaria: #2E2E2E;
+            --secundaria: #BFC0C2;
+            --terciaria: #8E8F91;
+            --texto-escuro: #0F0F10;
+            --texto-claro: #F4F5F6;
+            --fundo: #1F1F1F;
+            --card-bg: #2E2E2E;
+            --borda: #8E8F91;
+            --sombra: rgba(0, 0, 0, 0.3);
+            --destaque: #64B5F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--fundo);
+            color: var(--texto-escuro);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            background-color: var(--fundo);
+            z-index: 1000;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .header.scrolled {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--borda);
+            box-shadow: 0 2px 10px var(--sombra);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primaria);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: var(--texto-escuro);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: var(--primaria);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primaria);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--borda);
+            color: var(--texto-escuro);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primaria);
+            color: var(--texto-claro);
+            border-color: var(--primaria);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            color: var(--primaria);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--secundaria);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* PORTFÓLIO SECTION */
+        .portfolio-section {
+            margin: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primaria);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primaria);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* CONTAINER NETFLIX - CARDS 16:9 */
+        .netflix-container {
+            position: relative;
+            padding: 20px 0 60px;
+        }
+
+        .netflix-row {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 30px 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .netflix-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* CARDS 16:9 */
+        .netflix-card {
+            flex: 0 0 auto;
+            width: 320px; /* 16:9 proporção */
+            height: 180px; /* 320/180 = 16:9 */
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--borda);
+            box-shadow: 0 4px 12px var(--sombra);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            cursor: pointer;
+        }
+
+        .netflix-card:hover {
+            z-index: 100;
+            transform: scale(1.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* IMAGEM 16:9 */
+        .netflix-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .netflix-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* TÍTULO DOS CARDS */
+        .netflix-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, 
+                rgba(46, 46, 46, 0.95) 0%, 
+                rgba(46, 46, 46, 0.7) 70%, 
+                transparent 100%);
+            color: var(--texto-claro);
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        /* SEÇÕES DEDICADAS AOS PROJETOS */
+        .project-detail-section {
+            margin: 120px 0;
+            padding: 60px 0;
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .project-detail {
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            scroll-margin-top: 100px; /* Para scroll suave */
+        }
+
+        .project-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .project-header h2 {
+            font-size: 2.5rem;
+            color: var(--primaria);
+            margin-bottom: 15px;
+        }
+
+        .project-header p {
+            color: var(--secundaria);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* GALERIA DE IMAGENS DO PROJETO */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--borda);
+            box-shadow: 0 4px 12px var(--sombra);
+            transition: transform 0.3s;
+            cursor: zoom-in;
+        }
+
+        .project-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-description {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--borda);
+            margin-top: 40px;
+        }
+
+        .project-description h3 {
+            color: var(--primaria);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .project-description p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 30px;
+            margin-top: 25px;
+            color: var(--secundaria);
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 100px;
+            border-top: 1px solid var(--borda);
+            color: var(--secundaria);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            color: var(--primaria);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--destaque);
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .netflix-card {
+                width: 280px;
+                height: 157px; /* Mantém 16:9 */
+            }
+            
+            .project-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .netflix-card {
+                width: 240px;
+                height: 135px;
+            }
+            
+            .project-header h2 {
+                font-size: 2rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .netflix-card {
+                width: 200px;
+                height: 112px;
+            }
+            
+            .nav {
+                gap: 15px;
+            }
+            
+            .theme-toggle {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
+        /* INDICADOR DE SEÇÃO ATIVA */
+        .active-section {
+            position: relative;
+        }
+
+        .active-section::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primaria);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header" id="header">
+            <a href="#home" class="logo">EMPRESA</a>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#portfolio">Portfólio</a>
+                <a href="#project-1">Prime Iluminação</a>
+                <a href="#project-2">Maria Design</a>
+                <a href="#project-3">Pretender</a>
+                <a href="#project-4">Marcio Pintura</a>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1>Criando Experiências Memoráveis</h1>
+            <p>Somos especialistas em transformar visões em realidade. Com uma abordagem única e focada em resultados, entregamos projetos que se destacam pela qualidade e atenção aos detalhes.</p>
+            <p>Explore nosso portfólio e descubra como podemos elevar o seu próximo projeto.</p>
+        </section>
+
+        <!-- Portfólio Netflix-Style -->
+        <section class="portfolio-section" id="portfolio">
+            <h2 class="section-title">Destaques do Portfólio</h2>
+            
+            <div class="netflix-container">
+                <div class="netflix-row">
+                    <!-- Projeto 1 -->
+                    <a href="#project-1" class="netflix-card">
+                        <img src="projeto_2_PrimeIluminação/01_capa.png" alt="Prime Iluminação">
+                        <div class="netflix-title">Prime Iluminação</div>
+                    </a>
+
+                    <!-- Projeto 2 -->
+                    <a href="#project-2" class="netflix-card">
+                        <img src="projeto_3_MariaD-desing/01_capa.jpeg" alt="Maria Design">
+                        <div class="netflix-title">Maria Design</div>
+                    </a>
+
+                    <!-- Projeto 3 -->
+                    <a href="#project-3" class="netflix-card">
+                        <img src="projeto_4_Pretender/01_capa.jpeg" alt="Pretender">
+                        <div class="netflix-title">Pretender</div>
+                    </a>
+
+                    <!-- Projeto 4 -->
+                    <a href="#project-4" class="netflix-card">
+                        <img src="projeto_1_MarcioA-pinturas/01_capa.jpeg" alt="Marcio Pintura">
+                        <div class="netflix-title">Marcio Pintura</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DEDICADA - PROJETO 1 -->
+        <section class="project-detail-section">
+            <div class="project-detail" id="project-1">
+                <div class="project-header">
+                    <h2>Prime Iluminação</h2>
+                    <p>Redesign completo de identidade visual para startup de tecnologia</p>
+                </div>
+
+                <div class="project-gallery">
+                    <img src="projeto_2_PrimeIluminação/02_foto1.jpeg" alt="Prime Iluminação - Imagem 1" class="project-image">
+                    <img src="projeto_2_PrimeIluminação/03_foto2.jpeg" alt="Prime Iluminação - Imagem 2" class="project-image">
+                    <img src="projeto_2_PrimeIluminação/04_foto3.jpeg" alt="Prime Iluminação - Imagem 3" class="project-image">
+                    <img src="projeto_2_PrimeIluminação/05_foto4.jpeg" alt="Prime Iluminação - Imagem 4" class="project-image">
+                </div>
+
+                <div class="project-description">
+                    <h3>Sobre o Projeto</h3>
+                    <p>Desenvolvemos uma identidade visual completa para a TechStart Inc., uma startup focada em soluções de IA para o varejo. O projeto incluiu a criação de logo, manual da marca, site institucional e todos os materiais gráficos.</p>
+                    <p>O desafio era transmitir inovação e confiança simultaneamente, criando uma identidade que fosse moderna mas não excessivamente tecnológica.</p>
+                    
+                    <div class="project-meta">
+                        <span><strong>Cliente:</strong> TechStart Inc.</span>
+                        <span><strong>Ano:</strong> 2023</span>
+                        <span><strong>Área:</strong> Branding & Web Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO DEDICADA - PROJETO 2 -->
+            <div class="project-detail" id="project-2">
+                <div class="project-header">
+                    <h2>Maria Design</h2>
+                    <p>Campanha de marketing digital para lançamento de produto fashion</p>
+                </div>
+
+                <div class="project-gallery">
+                    <img src="projeto_3_MariaD-desing/02_foto1.jpeg" alt="Maria Design - Imagem 1" class="project-image">
+                    <img src="projeto_3_MariaD-desing/03_foto2.jpeg" alt="Maria Design - Imagem 2" class="project-image">
+                    <img src="projeto_3_MariaD-desing/04_foto3.jpeg" alt="Maria Design - Imagem 3" class="project-image">
+                    <img src="projeto_3_MariaD-desing/05_foto4.jpeg" alt="Maria Design - Imagem 4" class="project-image">
+                </div>
+
+                <div class="project-description">
+                    <h3>Sobre o Projeto</h3>
+                    <p>Gestão completa de campanha de lançamento para nova linha de acessórios da FashionBrand. Desenvolvimento de estratégia digital, criação de conteúdo para redes sociais, produção de fotos e gestão de anúncios.</p>
+                    <p>Resultado: Aumento de 150% no engajamento e recorde de vendas na primeira semana.</p>
+                    
+                    <div class="project-meta">
+                        <span><strong>Cliente:</strong> FashionBrand</span>
+                        <span><strong>Ano:</strong> 2023</span>
+                        <span><strong>Área:</strong> Marketing Digital</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO DEDICADA - PROJETO 3 -->
+            <div class="project-detail" id="project-3">
+                <div class="project-header">
+                    <h2>Pretender</h2>
+                    <p>Website institucional com sistema de gestão de conteúdo</p>
+                </div>
+
+                <div class="project-gallery">
+                    <img src="projeto_4_Pretender/01_capa.jpeg" alt="Pretender - Capa" class="project-image">
+                    <img src="projeto_4_Pretender/02_foto1.jpeg" alt="Pretender - Imagem 1" class="project-image">
+                    <img src="projeto_4_Pretender/03_foto2.jpeg" alt="Pretender - Imagem 2" class="project-image">
+                    <img src="projeto_4_Pretender/01_capa.jpeg" alt="Pretender - Capa" class="project-image">
+                </div>
+
+                <div class="project-description">
+                    <h3>Sobre o Projeto</h3>
+                    <p>Desenvolvimento de website responsivo para empresa de consultoria empresarial. O site conta com sistema de blog integrado, área para clientes e formulários inteligentes. Foco total em performance e SEO.</p>
+                    <p>Tecnologias utilizadas: WordPress, HTML5, CSS3, JavaScript, API de integração.</p>
+                    
+                    <div class="project-meta">
+                        <span><strong>Cliente:</strong> Consultoria XYZ</span>
+                        <span><strong>Ano:</strong> 2024</span>
+                        <span><strong>Área:</strong> Desenvolvimento Web</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO DEDICADA - PROJETO 4 -->
+            <div class="project-detail" id="project-4">
+                <div class="project-header">
+                    <h2>Marcio Pintura</h2>
+                    <p>Design de interface e experiência para aplicativo mobile</p>
+                </div>
+
+                <div class="project-gallery">
+                    <img src="projeto_1_MarcioA-pinturas/02_foto1.jpeg" alt="Marcio Pintura - Imagem 1" class="project-image">
+                    <img src="projeto_1_MarcioA-pinturas/03_foto2.jpeg" alt="Marcio Pintura - Imagem 2" class="project-image">
+                    <img src="projeto_1_MarcioA-pinturas/04_foto3.jpeg" alt="Marcio Pintura - Imagem 3" class="project-image">
+                    <img src="projeto_1_MarcioA-pinturas/05_foto4.jpeg" alt="Marcio Pintura - Imagem 4" class="project-image">
+                </div>
+
+                <div class="project-description">
+                    <h3>Sobre o Projeto</h3>
+                    <p>UI/UX Design para aplicativo de monitoramento de saúde. Inclui pesquisa com usuários, criação de personas, wireframes, protótipos interativos e design system completo. Foco em acessibilidade e usabilidade.</p>
+                    <p>O aplicativo foi desenvolvido para iOS e Android, com interface unificada e experiência consistente.</p>
+                    
+                    <div class="project-meta">
+                        <span><strong>Cliente:</strong> HealthTech Solutions</span>
+                        <span><strong>Ano:</strong> 2024</span>
+                        <span><strong>Área:</strong> UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="social-links">
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://behance.net" target="_blank">Behance</a>
+                <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+            </div>
+            <p>© 2024 Nome da Empresa. Todos os direitos reservados.</p>
+            <p>contato@empresa.com | (11) 99999-9999</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--terciaria);">
+                Desenvolvido com ❤️ para mostrar nosso trabalho
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle Tema
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const header = document.getElementById('header');
+        
+        // Verificar tema salvo
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        
+        // Alternar tema
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Ativar link da seção atual
+            updateActiveNavLink();
+        });
+
+        // Ativar link de navegação conforme scroll
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('.project-detail, .hero, .portfolio-section');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-section');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active-section');
+                }
+            });
+        }
+
+        // Zoom em imagens da galeria (simples)
+        document.querySelectorAll('.project-image').forEach(img => {
+            img.addEventListener('click', function() {
+                this.classList.toggle('zoomed');
+                if (this.classList.contains('zoomed')) {
+                    this.style.transform = 'scale(1.5)';
+                    this.style.zIndex = '1000';
+                    this.style.position = 'relative';
+                } else {
+                    this.style.transform = 'scale(1)';
+                    this.style.zIndex = '1';
+                }
+            });
+        });
+
+        // Inicializar
+        updateActiveNavLink();
+    </script>
+</body>
+</html>

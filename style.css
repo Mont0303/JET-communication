@@ -1,0 +1,42 @@
+:root {
+  /* TEMA CLARO - Default */
+  --primaria: #2E2E2E;
+  --secundaria: #8E8F91;
+  --terciaria: #BFC0C2;
+  --texto-escuro: #0F0F10;
+  --texto-claro: #F4F5F6;
+  --fundo: #E6E7E8;
+  
+  /* Cores derivadas */
+  --card-bg: #F4F5F6;
+  --borda: #BFC0C2;
+  --sombra: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  /* TEMA ESCURO */
+  --primaria: #2E2E2E;
+  --secundaria: #BFC0C2;  /* Note: invertidas */
+  --terciaria: #8E8F91;
+  --texto-escuro: #0F0F10;
+  --texto-claro: #F4F5F6;
+  --fundo: #1F1F1F;
+  
+  /* Cores derivadas para escuro */
+  --card-bg: #2E2E2E;
+  --borda: #8E8F91;
+  --sombra: rgba(0, 0, 0, 0.2);
+}
+
+/* Aplicação */
+body {
+  background-color: var(--fundo);
+  color: var(--texto-escuro);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--borda);
+  box-shadow: 0 4px 12px var(--sombra);
+}

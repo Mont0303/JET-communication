@@ -1,0 +1,10 @@
+NOME_DO_PROJETO:Marcio Pintura — Identidade Visual & Posicionamento
+CLIENTE: Marcio Pintura
+DATA: Janeiro / 2026
+CATEGORIA: Branding · Identidade Visual · Serviços
+DESCRICAO_CURTA: Identidade visual profissional para serviços de pintura e acabamento de alto padrão.
+DESCRICAO_LONGA: O projeto Marcio Pintura foi desenvolvido para transmitir profissionalismo, confiança e qualidade técnica. A identidade visual busca equilíbrio entre sobriedade e clareza, refletindo precisão, cuidado com os detalhes e excelência na entrega.
+O sistema visual foi pensado para fortalecer a presença da marca em materiais digitais e físicos, destacando o serviço como uma solução confiável e bem executada para acabamentos residenciais e comerciais.
+DESTAQUE: Não
+ORDEM_EXIBICAO: 1
+FOTOS_TOTAL: 6

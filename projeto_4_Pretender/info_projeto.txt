@@ -1,0 +1,27 @@
+NOME_DO_PROJETO:
+Pretender — Identidade Visual & Branding
+
+CLIENTE:
+Pretender
+
+DATA:
+Janeiro / 2026
+
+CATEGORIA:
+Branding · Identidade Visual · Design Estratégico
+
+DESCRICAO_CURTA:
+Marca contemporânea com estética forte, moderna e posicionamento estratégico.
+
+DESCRICAO_LONGA:
+O projeto Pretender foi desenvolvido com foco em uma identidade visual marcante e atual, equilibrando personalidade, clareza e impacto visual. A construção da marca prioriza contraste, tipografia expressiva e um sistema visual flexível, pensado para aplicações digitais e institucionais.
+A identidade foi criada para transmitir atitude, presença e diferenciação, mantendo coerência em todos os pontos de contato da marca.
+
+DESTAQUE:
+Não
+
+ORDEM_EXIBICAO:
+4
+
+FOTOS_TOTAL:
+3

@@ -1,0 +1,9 @@
+NOME_DO_PROJETO: Maria Design — Identidade Visual & Branding Premium
+CLIENTE: Maria Design
+DATA: Janeiro / 2026
+CATEGORIA: Branding · Identidade Visual · Design Estratégico
+DESCRICAO_CURTA: Identidade visual premium com estética minimalista, sensorial e sofisticada.
+DESCRICAO_LONGA: O projeto Maria Design foi desenvolvido com foco em um posicionamento premium, silencioso e altamente sofisticado. A identidade visual parte do minimalismo elegante, utilizando tons escuros combinados ao dourado refinado, linhas orgânicas e referências sensoriais, o símbolo central — uma flor de lótus em 2D com iniciais ocultas — funciona como um elemento simbólico e exclusivo, reforçando equilíbrio, delicadeza e confiança, todo o sistema visual foi pensado para aplicações digitais e físicas, garantindo consistência, refinamento e presença marcante em todos os pontos de contato da marca.
+DESTAQUE: Sim
+ORDEM_EXIBICAO: 3
+FOTOS_TOTAL: 6 

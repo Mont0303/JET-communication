@@ -1,0 +1,10 @@
+NOME_DO_PROJETO: Prime — Identidade Visual & Branding Premium
+CLIENTE: Prime
+DATA: Janeiro / 2026
+CATEGORIA: Branding · Identidade Visual · Design Premium
+DESCRICAO_CURTA: Identidade premium focada em sofisticação, clareza e alto padrão visual.
+DESCRICAO_LONGA: O projeto Prime nasceu a partir da necessidade de um posicionamento sólido, elegante e confiável. A identidade visual trabalha com uma estética limpa e refinada, combinando tipografia precisa, paleta equilibrada e composição minimalista.
+O resultado é uma marca forte, versátil e preparada para ambientes digitais e institucionais, transmitindo profissionalismo, exclusividade e valor.
+DESTAQUE: Sim
+ORDEM_EXIBICAO: 2
+FOTOS_TOTAL: 5

@@ -1,0 +1,6 @@
+id,pasta,nome_projeto,cliente,data,categoria,descricao_curta,descricao_longa,destaque,ordem_exibicao,fotos_total,capa
+1,projeto_1_MarcioA-pinturas,Marcio Pintura,Marcio Pintura,2026-01,Branding | Serviços,Identidade visual profissional para pintura e acabamento,Projeto focado em transmitir confiança e qualidade técnica em serviços de pintura e acabamento.,Nao,1,6,01_capa.jpeg
+2,projeto_2_Primelluminação,Prime Iluminação,Prime,2026-01,Branding | Design Premium,Identidade premium focada em sofisticação e clareza,Marca desenvolvida com estética refinada e posicionamento de alto padrão.,Sim,2,5,01_capa.png
+3,projeto_3_MariaD-desing,Maria Design,Maria Design,2026-01,Branding | Identidade Visual,Identidade visual premium minimalista,Projeto com foco sensorial e estética sofisticada baseada no minimalismo.,Sim,3,6,01_capa.jpeg
+4,projeto_4_Pretender,Pretender,Pretender,2026-01,Branding | Design Estratégico,Marca contemporânea de forte impacto visual,Identidade criada para transmitir atitude e diferenciação.,Nao,4,3,01_capa.jpeg
+

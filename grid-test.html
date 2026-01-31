@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Grid</title>
+    <style>
+        body { 
+            background: #E6E7E8; /* Seu fundo claro */
+            padding: 40px;
+            font-family: sans-serif;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-card {
+            background: #F4F5F6;
+            border: 1px solid #BFC0C2;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 300px;
+            position: relative;
+        }
+        
+        .test-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .test-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(46, 46, 46, 0.9); /* Sua primária */
+            color: #F4F5F6;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .test-card:hover .card-overlay {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: #0F0F10; margin-bottom: 40px;">
+        Teste Grid - Escolha o Layout
+    </h1>
+    
+    <div class="test-grid">
+        <div class="test-card">
+            <img src="https://picsum.photos/600/400?random=1" alt="Projeto 1">
+            <div class="card-overlay">
+                <h3>Projeto 1</h3>
+                <p>Descrição breve do projeto</p>
+            </div>
+        </div>
+        <!-- Repita mais 3 vezes -->
+    </div>
+    
+    <div style="text-align: center; margin-top: 50px;">
+        <button onclick="mudarLayout(2)">2 Colunas</button>
+        <button onclick="mudarLayout(3)">3 Colunas</button>
+        <button onclick="mudarLayout('masonry')">Mansory</button>
+    </div>
+    
+    <script>
+        function mudarLayout(cols) {
+            const grid = document.querySelector('.test-grid');
+            if (cols === 'masonry') {
+                grid.style.columns = '2';
+                grid.style.display = 'block';
+            } else {
+                grid.style.columns = 'none';
+                grid.style.display = 'grid';
+                grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            }
+        }
+    </script>
+</body>
+</html>

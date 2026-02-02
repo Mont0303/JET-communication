@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nome da Empresa | Portfólio</title>
     <style>
+        /* FONTES LOCAIS */
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: url('fonts/CormorantGaramond-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: url('fonts/CormorantGaramond-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Manrope';
+            src: url('fonts/Manrope-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
         :root {
             /* SEU TEMA CLARO */
             --primaria: #2E2E2E;
@@ -46,9 +66,14 @@
         body {
             background-color: var(--fundo);
             color: var(--texto-escuro);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Manrope', sans-serif;
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* FONTES PARA TÍTULOS */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .container {
